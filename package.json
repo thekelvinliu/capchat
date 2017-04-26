@@ -1,0 +1,38 @@
+{
+  "name": "capchat",
+  "version": "0.0.1",
+  "description": "a secure and usable messaging platform",
+  "private": true,
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "repository": "https://github.com/thekelvinliu/capchat",
+  "author": "kelvin liu <kelvin@thekelvinliu.com> (https://www.thekelvinliu.com/)",
+  "license": "MIT",
+  "scripts": {
+    "start": "react-native-scripts start",
+    "flow": "flow",
+    "lint": "eslint App",
+    "test": "jest"
+  },
+  "dependencies": {
+    "expo": "^16.0.0",
+    "react": "16.0.0-alpha.6",
+    "react-native": "^0.43.4",
+    "react-navigation": "1.0.0-beta.8"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-react-native": "^2.3.2",
+    "jest": "^19.0.2",
+    "jest-expo": "^0.4.0",
+    "react-native-scripts": "^0.0.29",
+    "react-test-renderer": "^15.5.4"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  }
+}
