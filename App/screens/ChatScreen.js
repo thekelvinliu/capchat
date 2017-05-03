@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Button, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import IconButton from '../components/IconButton';
 
 const style = {
   marginTop: 100,
@@ -11,9 +13,10 @@ export default class extends Component {
     return {
       title: `chat with ${navigation.state.params.username}`,
       headerRight: (
-        <Button
-          title="profile"
-          onPress={() => navigation.navigate('Profile', navigation.state.params)}
+        <IconButton
+          set={Ionicons}
+          name="md-person"
+          onPress={() => navigation.navigate('Menu')}
         />
       ),
     };

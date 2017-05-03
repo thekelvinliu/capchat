@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
+import { Entypo } from '@expo/vector-icons';
+import IconButton from '../components/IconButton';
 
 const style = {
   marginTop: 100,
@@ -11,15 +13,17 @@ export default class extends Component {
     return {
       title: 'capchat',
       headerLeft: (
-        <Button
-          title="menu"
+        <IconButton
+          set={Entypo}
+          name="menu"
           onPress={() => navigation.navigate('Menu')}
         />
       ),
       headerRight: (
-        <Button
-          title="new message"
-          onPress={() => navigation.navigate('Contacts', { mode: 'msg' })}
+        <IconButton
+          set={Entypo}
+          name="new-message"
+          onPress={() => navigation.navigate('Menu')}
         />
       ),
     };

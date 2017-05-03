@@ -9,7 +9,9 @@ const style = {
 export default class extends Component {
   static navigationOptions({ navigation }) {
     return {
-      title: (navigation.state.params.mode === 'self') ? 'my profile' : `${navigation.state.params.username}'s profile`
+      title: (navigation.state.params.mode === 'self')
+        ? 'my profile'
+        : `${navigation.state.params.username}'s profile`
     };
   }
   render() {
