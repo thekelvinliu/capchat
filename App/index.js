@@ -1,15 +1,33 @@
-import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Platform } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import ChatScreen from './screens/ChatScreen';
+import ContactsScreen from './screens/ContactsScreen';
+import HomeScreen from './screens/HomeScreen';
+import MenuScreen from './screens/MenuScreen';
+import ProfileScreen from './screens/ProfileScreen';
 
-const simple = {
-  marginTop: 100,
-  textAlign: 'center'
+const routes = {
+  Chat: {
+    screen: ChatScreen
+  },
+  Contacts: {
+    screen: ContactsScreen
+  },
+  Home: {
+    screen: HomeScreen
+  },
+  Menu: {
+    screen: MenuScreen
+  },
+  Profile: {
+    screen: ProfileScreen
+  },
 };
 
-export default class extends Component {
-  render() {
-    return (
-      <Text style={simple}>hello world</Text>
-    );
-  }
-}
+const App = StackNavigator(routes, {
+  initialRouteName: 'Home',
+  mode: (Platform.OS === 'ios') ? 'modal' : 'card',
+  headerMode: (Platform.OS === 'ios') ? 'float' : 'screen'
+});
+
+export default App;
