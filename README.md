@@ -1,6 +1,13 @@
 # capchat
 a secure and usable messaging platform
 
+## todo
+- [ ] get signal working
+- [ ] get ethjs/web3 working
+- [ ] tests
+- [ ] eject(???)
+- [ ] make the ui pretty
+
 ## about
 capchat is my computer science capstone/senior project.
 it is meant to be a secure and usable messaging platform.
