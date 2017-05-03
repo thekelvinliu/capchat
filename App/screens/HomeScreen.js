@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button, Platform, StatusBar, Text, View } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import IconButton from '../components/IconButton';
 
@@ -31,6 +31,7 @@ export default class extends Component {
   render() {
     return (
       <View>
+        <StatusBar hidden={Platform.OS === 'android'} />
         <Text style={style}>this is the menu screen</Text>
         <Button
           title="chat with alice"
