@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^4.0.0",
+    "ethjs": "thekelvinliu/ethjs",
     "expo": "^16.0.0",
     "react": "16.0.0-alpha.6",
     "react-native": "^0.43.4",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
+    "babel-plugin-transform-imports": "^1.2.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
