@@ -2401,11 +2401,28 @@ ethjs-abi@0.1.7:
     js-sha3 "0.5.5"
     number-to-bn "1.7.0"
 
+ethjs-abi@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/ethjs-abi/-/ethjs-abi-0.2.0.tgz#d3e2c221011520fc499b71682036c14fcc2f5b25"
+  dependencies:
+    bn.js "4.11.6"
+    js-sha3 "0.5.5"
+    number-to-bn "1.7.0"
+
 ethjs-contract@0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/ethjs-contract/-/ethjs-contract-0.1.7.tgz#ce25415f51a414a82ddb5cba0fa675040439fcea"
   dependencies:
     ethjs-abi "0.1.7"
+    ethjs-filter "0.1.5"
+    ethjs-util "0.1.3"
+    js-sha3 "0.5.5"
+
+ethjs-contract@0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/ethjs-contract/-/ethjs-contract-0.1.9.tgz#1c2766896a56d47ec1d6d661829c49cc38a5520a"
+  dependencies:
+    ethjs-abi "0.2.0"
     ethjs-filter "0.1.5"
     ethjs-util "0.1.3"
     js-sha3 "0.5.5"
@@ -2425,9 +2442,26 @@ ethjs-format@0.1.8:
     number-to-bn "1.7.0"
     strip-hex-prefix "1.0.0"
 
+ethjs-format@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/ethjs-format/-/ethjs-format-0.2.0.tgz#b4aa513fc1d50270d8f102bf06f03c9490d31391"
+  dependencies:
+    bn.js "4.11.6"
+    ethjs-schema "0.1.5"
+    ethjs-util "0.1.3"
+    is-hex-prefixed "1.0.0"
+    number-to-bn "1.7.0"
+    strip-hex-prefix "1.0.0"
+
 ethjs-provider-http@0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/ethjs-provider-http/-/ethjs-provider-http-0.1.3.tgz#4508290791e8a8b8a55790afb0a2d5db75651bf1"
+  dependencies:
+    xhr2 "0.1.3"
+
+ethjs-provider-http@0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/ethjs-provider-http/-/ethjs-provider-http-0.1.6.tgz#1ec5d9b4be257ef1d56a500b22a741985e889420"
   dependencies:
     xhr2 "0.1.3"
 
@@ -2438,15 +2472,30 @@ ethjs-query@0.2.1:
     ethjs-format "0.1.8"
     ethjs-rpc "0.1.1"
 
+ethjs-query@0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/ethjs-query/-/ethjs-query-0.2.6.tgz#9d8e6044b8bf76dd3340f843716a2259b9c91d3c"
+  dependencies:
+    ethjs-format "0.2.0"
+    ethjs-rpc "0.1.5"
+
 ethjs-rpc@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/ethjs-rpc/-/ethjs-rpc-0.1.1.tgz#8212d3dd10816ada506edda4a40c2159702fde6d"
   dependencies:
     ethjs-format "0.1.8"
 
+ethjs-rpc@0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/ethjs-rpc/-/ethjs-rpc-0.1.5.tgz#099e22f27dc4c18b6978a485fc36b1b0f7969080"
+
 ethjs-schema@0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/ethjs-schema/-/ethjs-schema-0.1.4.tgz#0323a16333b1ace9a8f1d696a6ee63448fdd455f"
+
+ethjs-schema@0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/ethjs-schema/-/ethjs-schema-0.1.5.tgz#59740e3b3977bcdbb9b11bc3068201e8aceabb0d"
 
 ethjs-unit@0.1.6:
   version "0.1.6"
@@ -2469,6 +2518,21 @@ ethjs-util@thekelvinliu/ethjs-util:
     buffer "^5.0.6"
     is-hex-prefixed "1.0.0"
     strip-hex-prefix "1.0.0"
+
+ethjs@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/ethjs/-/ethjs-0.2.7.tgz#a5ca83589133cb6038893ca48958d5cac1135ee8"
+  dependencies:
+    bn.js "4.11.6"
+    ethjs-abi "0.2.0"
+    ethjs-contract "0.1.9"
+    ethjs-filter "0.1.5"
+    ethjs-provider-http "0.1.6"
+    ethjs-query "0.2.6"
+    ethjs-unit "0.1.6"
+    ethjs-util "0.1.3"
+    js-sha3 "0.5.5"
+    number-to-bn "1.7.0"
 
 ethjs@thekelvinliu/ethjs:
   version "0.1.7"
@@ -4947,8 +5011,8 @@ react-deep-force-update@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz#f911b5be1d2a6fe387507dd6e9a767aa2924b4c7"
 
 react-devtools-core@^2.0.8:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/react-devtools-core/-/react-devtools-core-2.1.5.tgz#cc36c514d20418d698d5e4780aa744e6d11aaa9a"
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/react-devtools-core/-/react-devtools-core-2.1.7.tgz#7ec9521fcf846c345830125132596f22fdbaaee6"
   dependencies:
     shell-quote "^1.6.1"
     ws "^2.0.3"
@@ -5009,9 +5073,11 @@ react-native-scripts@^0.0.29:
     color "^0.11.1"
     lodash "^4.0.0"
 
-react-native-tab-view@^0.0.57:
-  version "0.0.57"
-  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.57.tgz#715e2ea4100fa50168e134df3947dd76ebd55743"
+react-native-tab-view@^0.0.61:
+  version "0.0.61"
+  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.61.tgz#9f5446c9ad33158b87f0bccf5004fbff79ca1f92"
+  dependencies:
+    prop-types "^15.5.8"
 
 react-native-vector-icons@4.0.0:
   version "4.0.0"
@@ -5105,9 +5171,9 @@ react-native@^0.43.4:
     xpipe "^1.0.5"
     yargs "^6.4.0"
 
-react-navigation@1.0.0-beta.8:
-  version "1.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-1.0.0-beta.8.tgz#9d2aa41c465008b4392e309332b0dad13533e180"
+react-navigation@^1.0.0-beta.9:
+  version "1.0.0-beta.9"
+  resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-1.0.0-beta.9.tgz#9fb1f8e4d15cee70cc8b5d58719a986ca443664d"
   dependencies:
     clamp "^1.0.1"
     fbjs "^0.8.5"
@@ -5115,7 +5181,7 @@ react-navigation@1.0.0-beta.8:
     path-to-regexp "^1.7.0"
     prop-types "^15.5.8"
     react-native-drawer-layout-polyfill "1.2.0"
-    react-native-tab-view "^0.0.57"
+    react-native-tab-view "^0.0.61"
 
 react-proxy@^1.1.7:
   version "1.1.8"
@@ -6500,13 +6566,9 @@ xdl@^40.0.0:
     xhr2 "^0.1.3"
     yesno "^0.0.1"
 
-xhr2@0.1.3:
+xhr2@0.1.3, xhr2@^0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/xhr2/-/xhr2-0.1.3.tgz#cbfc4759a69b4a888e78cf4f20b051038757bd11"
-
-xhr2@^0.1.3:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/xhr2/-/xhr2-0.1.4.tgz#7f87658847716db5026323812f818cadab387a5f"
 
 xml-name-validator@^2.0.1:
   version "2.0.1"
