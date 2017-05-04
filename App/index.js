@@ -6,6 +6,8 @@ import HomeScreen from './screens/HomeScreen';
 import MenuScreen from './screens/MenuScreen';
 import ProfileScreen from './screens/ProfileScreen';
 
+import './globals';
+
 const routes = {
   Chat: {
     screen: ChatScreen
