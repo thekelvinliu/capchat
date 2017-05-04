@@ -16,7 +16,12 @@ export default class extends Component {
         <IconButton
           set={Ionicons}
           name="md-person"
-          onPress={() => navigation.navigate('Menu')}
+          onPress={() =>
+            navigation.navigate('Profile', {
+              mode: 'friend',
+              username: navigation.state.params.username
+            })
+          }
         />
       ),
     };

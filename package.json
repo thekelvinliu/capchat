@@ -9,6 +9,7 @@
   "license": "MIT",
   "scripts": {
     "start": "react-native-scripts start",
+    "ios": "react-native-scripts ios",
     "flow": "flow",
     "lint": "eslint App",
     "test": "jest"

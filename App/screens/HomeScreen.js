@@ -27,7 +27,7 @@ export default class extends Component {
         <IconButton
           set={Entypo}
           name="new-message"
-          onPress={() => navigation.navigate('Menu')}
+          onPress={() => navigation.navigate('Contacts', { mode: 'new' })}
         />
       ),
     };
@@ -35,11 +35,10 @@ export default class extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      balance: '0',
-      blockNumber: '0'
+      isLoading: true
     };
   }
-  componentDidMount() {
+  componentWillMount() {
     this.getData().done();
   }
   async getData() {
@@ -50,13 +49,18 @@ export default class extends Component {
     const blockNumber = await eth.blockNumber();
     this.setState({
       balance,
-      blockNumber
+      blockNumber,
+      isLoading: false
     });
   }
   render() {
-    const texts = Object.keys(this.state).map(k => (
-      <Text style={style} key={k}>{`the ${k} is ${this.state[k]}`}</Text>
-    ));
+    const texts = (this.state.isLoading)
+      ? <Text style={style}>loading data from ethereum</Text>
+      : Object.keys(this.state)
+        .filter(k => k !== 'isLoading')
+        .map(k => (
+          <Text style={style} key={k}>{`the ${k} is ${this.state[k]}`}</Text>
+        ));
     return (
       <View>
         <StatusBar hidden={Platform.OS === 'android'} />
