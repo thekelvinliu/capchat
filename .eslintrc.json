@@ -15,6 +15,10 @@
     "react-native"
   ],
   "rules": {
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
     "comma-dangle": 0,
     "react/jsx-filename-extension": 0,
     "react/prefer-stateless-function": 0,
