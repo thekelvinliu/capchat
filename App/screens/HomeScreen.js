@@ -6,10 +6,9 @@ import { Entypo } from '@expo/vector-icons';
 import IconButton from '../components/IconButton';
 
 const eth = new Eth(new Eth.HttpProvider('https://ropsten.infura.io'));
-// const acc = '0xeb61b66ea48a8834d4099a6276982cc211b0604d';
 
 const style = {
-  marginTop: 100,
+  marginTop: 10,
   textAlign: 'center'
 };
 
@@ -36,29 +35,28 @@ export default class extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      blockNumber: '',
-      isLoading: true
+      balance: '0',
+      blockNumber: '0'
     };
   }
   componentDidMount() {
-    // this.getBalance(acc).done();
-    this.getBlockNumber().done();
-    // this.setState({ isLoading: false });
+    this.getData().done();
   }
-  // not working yet
-  // async getBalance(account) {
-  //   this.setState({
-  //     balance: Eth.fromWei(await eth.getBalance(account), 'ether')
-  //   });
-  // }
-  async getBlockNumber() {
-    const bn = await eth.blockNumber();
+  async getData() {
+    const balance = Eth.fromWei(
+      await eth.getBalance('0xeb61b66ea48a8834d4099a6276982cc211b0604d'),
+      'ether'
+    );
+    const blockNumber = await eth.blockNumber();
     this.setState({
-      blockNumber: bn.toString(),
-      isLoading: false
+      balance,
+      blockNumber
     });
   }
   render() {
+    const texts = Object.keys(this.state).map(k => (
+      <Text style={style} key={k}>{`the ${k} is ${this.state[k]}`}</Text>
+    ));
     return (
       <View>
         <StatusBar hidden={Platform.OS === 'android'} />
@@ -67,11 +65,7 @@ export default class extends Component {
           title="chat with alice"
           onPress={() => this.props.navigation.navigate('Chat', { username: 'alice' })}
         />
-        <Text style={style}>{
-          (this.state.isLoading)
-            ? 'loading block number'
-            : `the current block number is ${this.state.blockNumber}`
-        }</Text>
+        {texts}
       </View>
     );
   }
