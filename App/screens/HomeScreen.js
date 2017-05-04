@@ -23,7 +23,7 @@ export default class extends Component {
         <IconButton
           set={Entypo}
           name="new-message"
-          onPress={() => navigation.navigate('Menu')}
+          onPress={() => navigation.navigate('Contacts')}
         />
       ),
     };
