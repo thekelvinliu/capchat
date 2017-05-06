@@ -8,25 +8,46 @@ const style = {
 
 export default class extends Component {
   static navigationOptions({ navigation }) {
+    const { params } = navigation.state;
     return {
-      title: (navigation.state.params.mode === 'browse') ? 'contacts' : 'new message',
+      title: (params.mode === 'browse')
+        ? 'contacts'
+        : 'new message'
     };
   }
   render() {
+    const { navigate, state } = this.props.navigation;
+    const { params, routeName } = state;
+    const target = (params.mode === 'browse') ? 'Profile' : 'Chat';
     return (
       <View>
         <Text style={style}>this is the contacts screen</Text>
         <Button
           title="contact 1"
-          onPress={() => this.props.navigation.navigate('Chat', { username: 'contact 1' })}
+          onPress={() =>
+            navigate(target, {
+              from: routeName,
+              username: 'contact 1'
+            })
+          }
         />
         <Button
           title="contact 2"
-          onPress={() => this.props.navigation.navigate('Chat', { username: 'contact 2' })}
+          onPress={() =>
+            navigate(target, {
+              from: routeName,
+              username: 'contact 2'
+            })
+          }
         />
         <Button
           title="contact 3"
-          onPress={() => this.props.navigation.navigate('Chat', { username: 'contact 3' })}
+          onPress={() =>
+            navigate(target, {
+              from: routeName,
+              username: 'contact 3'
+            })
+          }
         />
       </View>
     );

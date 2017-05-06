@@ -3,6 +3,7 @@ import Eth from 'ethjs';
 import React, { Component } from 'react';
 import { Button, Platform, StatusBar, Text, View } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
+
 import IconButton from '../components/IconButton';
 
 const eth = new Eth(new Eth.HttpProvider('https://ropsten.infura.io'));
@@ -14,22 +15,33 @@ const style = {
 
 export default class extends Component {
   static navigationOptions({ navigation }) {
+    const { navigate, state } = navigation;
+    const { routeName } = state;
     return {
       title: 'capchat',
       headerLeft: (
         <IconButton
           set={Entypo}
           name="menu"
-          onPress={() => navigation.navigate('Menu')}
+          onPress={() =>
+            navigate('Menu', {
+              from: routeName
+            })
+          }
         />
       ),
       headerRight: (
         <IconButton
           set={Entypo}
           name="new-message"
-          onPress={() => navigation.navigate('Contacts', { mode: 'new' })}
+          onPress={() =>
+            navigate('Contacts', {
+              from: routeName,
+              mode: 'new'
+            })
+          }
         />
-      ),
+      )
     };
   }
   constructor(props) {
@@ -54,6 +66,8 @@ export default class extends Component {
     });
   }
   render() {
+    const { navigate, state } = this.props.navigation;
+    const { routeName } = state;
     const texts = (this.state.isLoading)
       ? <Text style={style}>loading data from ethereum</Text>
       : Object.keys(this.state)
@@ -67,7 +81,12 @@ export default class extends Component {
         <Text style={style}>this is the menu screen</Text>
         <Button
           title="chat with alice"
-          onPress={() => this.props.navigation.navigate('Chat', { username: 'alice' })}
+          onPress={() =>
+            navigate('Chat', {
+              from: routeName,
+              username: 'alice'
+            })
+          }
         />
         {texts}
       </View>

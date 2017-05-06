@@ -7,25 +7,32 @@ const style = {
 };
 
 export default class extends Component {
-  // static navigationOptions({ navigation }) {
-  //   return {
-  //     title: 'capchat menu'
-  //   };
-  // }
   static navigationOptions = {
     title: 'capchat menu'
   };
   render() {
+    const { navigate, state } = this.props.navigation;
+    const { routeName } = state;
     return (
       <View>
         <Text style={style}>this is the menu screen</Text>
         <Button
           title="my profile"
-          onPress={() => this.props.navigation.navigate('Profile', { mode: 'self' })}
+          onPress={() =>
+            navigate('Profile', {
+              from: routeName,
+              mode: 'self'
+            })
+          }
         />
         <Button
           title="all contacts"
-          onPress={() => this.props.navigation.navigate('Contacts', { mode: 'browse' })}
+          onPress={() =>
+            navigate('Contacts', {
+              from: routeName,
+              mode: 'browse'
+            })
+          }
         />
         <Text style={style}>danger zone</Text>
         <Button

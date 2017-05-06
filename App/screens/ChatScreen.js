@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+
 import IconButton from '../components/IconButton';
 
 const style = {
@@ -10,20 +11,25 @@ const style = {
 
 export default class extends Component {
   static navigationOptions({ navigation }) {
+    const { navigate, state } = navigation;
+    const { params, routeName } = state;
     return {
-      title: `chat with ${navigation.state.params.username}`,
-      headerRight: (
-        <IconButton
-          set={Ionicons}
-          name="md-person"
-          onPress={() =>
-            navigation.navigate('Profile', {
-              mode: 'friend',
-              username: navigation.state.params.username
-            })
-          }
-        />
-      ),
+      title: `chat with ${params.username}`,
+      headerRight: (params.from === 'Profile')
+        ? null
+        : (
+          <IconButton
+            set={Ionicons}
+            name="md-person"
+            onPress={() =>
+              navigate('Profile', {
+                from: routeName,
+                mode: 'friend',
+                username: params.username
+              })
+            }
+          />
+        )
     };
   }
   render() {
