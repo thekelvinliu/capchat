@@ -2,12 +2,14 @@
 a secure and usable messaging platform
 
 ## todo
-- [ ] get signal working
 - [x] get ethjs/web3 working
-- [ ] initial registration stuff
-- [ ] offline/persistent storage
-- [ ] integrate redux
-- [ ] tests
+- [x] integrate redux
+- [x] initial registration screen
+- [ ] create wallet
+- [ ] get signal working
+- [ ] create keys
+- [ ] deploy user contract
+- [ ] persist storange
 - [ ] eject(???)
 - [ ] make the ui pretty
 
