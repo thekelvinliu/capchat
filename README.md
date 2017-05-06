@@ -3,7 +3,10 @@ a secure and usable messaging platform
 
 ## todo
 - [ ] get signal working
-- [ ] get ethjs/web3 working
+- [x] get ethjs/web3 working
+- [ ] initial registration stuff
+- [ ] offline/persistent storage
+- [ ] integrate redux
 - [ ] tests
 - [ ] eject(???)
 - [ ] make the ui pretty
