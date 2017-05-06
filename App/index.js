@@ -1,38 +1,26 @@
-import { Platform } from 'react-native';
-import { StackNavigator } from 'react-navigation';
-import ChatScreen from './screens/ChatScreen';
-import ContactsScreen from './screens/ContactsScreen';
-import HomeScreen from './screens/HomeScreen';
-import MenuScreen from './screens/MenuScreen';
-import ProfileScreen from './screens/ProfileScreen';
-
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+import App from './app';
+import reducers from './ducks';
 import './globals';
 
-const routes = {
-  Chat: {
-    screen: ChatScreen
-  },
-  Contacts: {
-    screen: ContactsScreen
-  },
-  Home: {
-    screen: HomeScreen
-  },
-  Menu: {
-    screen: MenuScreen
-  },
-  Profile: {
-    screen: ProfileScreen
-  }
+// some configuration for the store
+const initial = {
+  isRegistered: false
 };
+const middlewares = applyMiddleware(thunk, logger);
+// create the redux store
+const store = createStore(reducers, initial, middlewares);
 
-const App = StackNavigator(routes, {
-  initialRouteName: 'Home',
-  mode: (Platform.OS === 'ios') ? 'modal' : 'card',
-  headerMode: (Platform.OS === 'ios') ? 'float' : 'screen',
-  navigationOptions: {
-    headerBackTitle: 'back'
+export default class extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
   }
-});
-
-export default App;
+}
