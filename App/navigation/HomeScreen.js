@@ -1,4 +1,5 @@
 import Eth from 'ethjs';
+import Crypto from 'crypto-js';
 
 import React, { Component } from 'react';
 import { Button, Platform, StatusBar, Text, View } from 'react-native';
@@ -88,6 +89,8 @@ export default class extends Component {
             })
           }
         />
+        <Text style={style}>{`${Buffer.from('hello world').toString('hex')}`}</Text>
+        <Text style={style}>{`${Crypto.AES.encrypt('hello world', 'password')}`}</Text>
         {texts}
       </View>
     );
