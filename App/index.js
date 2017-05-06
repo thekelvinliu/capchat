@@ -23,13 +23,16 @@ const routes = {
   },
   Profile: {
     screen: ProfileScreen
-  },
+  }
 };
 
 const App = StackNavigator(routes, {
   initialRouteName: 'Home',
   mode: (Platform.OS === 'ios') ? 'modal' : 'card',
-  headerMode: (Platform.OS === 'ios') ? 'float' : 'screen'
+  headerMode: (Platform.OS === 'ios') ? 'float' : 'screen',
+  navigationOptions: {
+    headerBackTitle: 'back'
+  }
 });
 
 export default App;
