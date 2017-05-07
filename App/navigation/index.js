@@ -1,5 +1,6 @@
 import { Platform } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import AddContactScreen from './AddContactScreen';
 import ChatScreen from './ChatScreen';
 import ContactsScreen from './ContactsScreen';
 import HomeScreen from './HomeScreen';
@@ -16,6 +17,9 @@ export const Registration = StackNavigator({
 
 // navigation routes
 const routes = {
+  AddContact: {
+    screen: AddContactScreen
+  },
   Chat: {
     screen: ChatScreen
   },
