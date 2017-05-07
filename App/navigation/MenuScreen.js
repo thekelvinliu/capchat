@@ -1,15 +1,34 @@
 import React, { Component } from 'react';
 import { Alert, Button, Text, View } from 'react-native';
+import { connect } from 'react-redux';
+import { removeAccount } from '../ducks/account';
+import { removeMessagesAll, removeMessagesFrom } from '../ducks/messages';
+import { resetRegistration } from '../ducks/registration';
 
 const style = {
   marginTop: 100,
   textAlign: 'center'
 };
 
-export default class extends Component {
+class MenuScreen extends Component {
   static navigationOptions = {
     title: 'capchat menu'
   };
+  constructor(props) {
+    super(props);
+    this._removeMessages = this._removeMessages.bind(this);
+    this._removeProfile = this._removeProfile.bind(this);
+  }
+  _removeMessages(username) {
+    if (!username)
+      this.props.removeMessagesAll();
+    else
+      this.props.removeMessagesFrom(username);
+  }
+  _removeProfile() {
+    this.props.removeAccount();
+    this.props.resetRegistration();
+  }
   render() {
     const { navigate, state } = this.props.navigation;
     const { routeName } = state;
@@ -51,11 +70,27 @@ export default class extends Component {
               'this will permanently remove all messages from your phone. proceed with caution!',
               [{
                 text: 'ok',
-                onPress: () => console.log('messages removed'),
+                onPress: this._removeMessages,
                 style: 'destructive'
               }, {
                 text: 'cancel',
-                onPress: () => console.log('messages removal canceled'),
+                style: 'cancel'
+              }]
+            )
+          }
+        />
+        <Button
+          title="clear bob"
+          onPress={() =>
+            Alert.alert(
+              'clear messages?',
+              'this will permanently remove all messages from your phone. proceed with caution!',
+              [{
+                text: 'ok',
+                onPress: () => this._removeMessages('bob'),
+                style: 'destructive'
+              }, {
+                text: 'cancel',
                 style: 'cancel'
               }]
             )
@@ -69,11 +104,10 @@ export default class extends Component {
               'this will permanently remove this profile from your phone. proceed with caution!',
               [{
                 text: 'ok',
-                onPress: () => console.log('profile removed'),
+                onPress: this._removeProfile,
                 style: 'destructive'
               }, {
                 text: 'cancel',
-                onPress: () => console.log('profile removal canceled'),
                 style: 'cancel'
               }]
             )
@@ -83,3 +117,10 @@ export default class extends Component {
     );
   }
 }
+
+export default connect(null, {
+  removeAccount,
+  removeMessagesAll,
+  removeMessagesFrom,
+  resetRegistration
+})(MenuScreen);

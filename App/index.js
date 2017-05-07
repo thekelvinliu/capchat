@@ -9,7 +9,29 @@ import './globals';
 
 // some configuration for the store
 const initial = {
-  isRegistered: false
+  isRegistered: false,
+  messages: {
+    alice: [
+      {
+        type: 'from',
+        body: 'hey'
+      },
+      {
+        type: 'to',
+        body: 'hello'
+      }
+    ],
+    bob: [
+      {
+        type: 'to',
+        body: 'hello'
+      },
+      {
+        type: 'from',
+        body: 'world'
+      }
+    ]
+  }
 };
 const middlewares = applyMiddleware(thunk, logger);
 // create the redux store

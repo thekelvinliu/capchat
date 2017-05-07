@@ -41,7 +41,7 @@ class RegistrationScreen extends Component {
   _register() {
     this.setState({ buttonPressed: true });
     this.props.setUsername(this.state.username.trim());
-    setTimeout(() => this.props.completeRegistration(), 5000);
+    setTimeout(() => this.props.completeRegistration(), 1000);
   }
   render() {
     const copy = [
