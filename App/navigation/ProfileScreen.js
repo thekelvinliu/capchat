@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Alert, Button, Text } from 'react-native';
+import { connect } from 'react-redux';
 import { Entypo } from '@expo/vector-icons';
 
+import { removeContact } from '../ducks/contacts';
+
+import FlexItem from '../components/FlexItem';
+import FlexWrapper from '../components/FlexWrapper';
 import IconButton from '../components/IconButton';
 
-const style = {
-  marginTop: 100,
-  textAlign: 'center'
-};
-
-export default class extends Component {
+class ProfileScreen extends Component {
   static navigationOptions({ navigation }) {
     const { navigate, state } = navigation;
     const { params, routeName } = state;
@@ -33,11 +33,45 @@ export default class extends Component {
         )
     };
   }
+  constructor(props) {
+    super(props);
+    this._removeContact = this._removeContact.bind(this);
+  }
+  _removeContact() {
+    const { goBack, state } = this.props.navigation;
+    const { params } = state;
+    this.props.removeContact(params.username);
+    goBack();
+  }
   render() {
+    const { params } = this.props.navigation.state;
     return (
-      <View>
-        <Text style={style}>this is the profile screen</Text>
-      </View>
+      <FlexWrapper>
+        <FlexItem>
+          <Text>this is the profile screen</Text>
+        </FlexItem>
+        <FlexItem>
+          <Button
+            title={`remove ${params.username}`}
+            onPress={() =>
+              Alert.alert(
+                'are you sure?',
+                `${params.username} will permanently be removed. proceed with caution!`,
+                [{
+                  text: 'ok',
+                  onPress: this._removeContact,
+                  style: 'destructive'
+                }, {
+                  text: 'cancel',
+                  style: 'cancel'
+                }]
+              )
+            }
+          />
+        </FlexItem>
+      </FlexWrapper>
     );
   }
 }
+
+export default connect(null, { removeContact })(ProfileScreen);
