@@ -1,29 +1,14 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
+
 import { setUsername } from '../ducks/account';
 import { completeRegistration } from '../ducks/registration';
 
-const $colors = {
-  gray: 'gray',
-  white: 'white'
-};
-
-const styles = StyleSheet.create({
-  container: {
-    margin: 10
-  },
-  input: {
-    height: 32,
-    backgroundColor: $colors.white,
-    borderColor: $colors.gray,
-    borderWidth: 1,
-  },
-  row: {
-    marginTop: 5
-  }
-});
+import FlexItem from '../components/FlexItem';
+import FlexWrapper from '../components/FlexWrapper';
+import TextPrompt from '../components/TextPrompt';
 
 class RegistrationScreen extends Component {
   static navigationOptions = {
@@ -51,32 +36,34 @@ class RegistrationScreen extends Component {
       'to get started, all you need to do is register a username and create a password.'
     ].join('');
     return (
-      <View style={styles.container}>
-        <Text>{copy}</Text>
-        <View style={styles.row}>
-          <Text>username:</Text>
-          <TextInput
-            style={styles.input}
+      <FlexWrapper>
+        <Spinner
+          visible={this.state.buttonPressed}
+          textContent={`registering '${this.props.account.username}'...`}
+        />
+        <FlexItem>
+          <Text>{copy}</Text>
+        </FlexItem>
+        <FlexItem>
+          <TextPrompt
+            prompt="username"
             autoCapitalize="none"
             autoCorrect={false}
             autoFocus
             maxLength={32}
-            placeholder="username"
             onChangeText={username => this.setState({ username })}
           />
-        </View>
-        <View style={styles.row}>
-          <Text>password:</Text>
-          <TextInput
-            style={styles.input}
+        </FlexItem>
+        <FlexItem>
+          <TextPrompt
+            prompt="password"
             autoCapitalize="none"
             autoCorrect={false}
             secureTextEntry
-            placeholder="password"
             onChangeText={password => this.setState({ password })}
           />
-        </View>
-        <View style={styles.row}>
+        </FlexItem>
+        <FlexItem>
           <Button
             title="register"
             onPress={this._register}
@@ -85,12 +72,8 @@ class RegistrationScreen extends Component {
               || this.state.buttonPressed
             }
           />
-        </View>
-        <Spinner
-          visible={this.state.buttonPressed}
-          textContent={`registering '${this.props.account.username}'...`}
-        />
-      </View>
+        </FlexItem>
+      </FlexWrapper>
     );
   }
 }

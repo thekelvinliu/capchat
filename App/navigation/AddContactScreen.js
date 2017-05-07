@@ -1,27 +1,14 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, Text } from 'react-native';
+import { connect } from 'react-redux';
 
-const $colors = {
-  gray: 'gray',
-  white: 'white'
-};
+import { addContact } from '../ducks/contacts';
 
-const styles = StyleSheet.create({
-  container: {
-    margin: 10
-  },
-  input: {
-    height: 32,
-    backgroundColor: $colors.white,
-    borderColor: $colors.gray,
-    borderWidth: 1,
-  },
-  row: {
-    marginTop: 5
-  }
-});
+import FlexItem from '../components/FlexItem';
+import FlexWrapper from '../components/FlexWrapper';
+import TextPrompt from '../components/TextPrompt';
 
-export default class extends Component {
+class AddContactScreen extends Component {
   static navigationOptions = {
     title: 'add contact'
   };
@@ -30,30 +17,37 @@ export default class extends Component {
     this.state = {
       username: ''
     };
+    this._addContact = this._addContact.bind(this);
+  }
+  _addContact() {
+    this.props.addContact(this.state.username.trim());
   }
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.row}>
-          <Text>username:</Text>
-          <TextInput
-            style={styles.input}
+      <FlexWrapper>
+        <FlexItem>
+          <Text>please enter the username of the contact you would like to add.</Text>
+        </FlexItem>
+        <FlexItem>
+          <TextPrompt
+            prompt="username"
             autoCapitalize="none"
             autoCorrect={false}
             autoFocus
             maxLength={32}
-            placeholder="username"
             onChangeText={username => this.setState({ username })}
           />
-        </View>
-        <View style={styles.row}>
+        </FlexItem>
+        <FlexItem>
           <Button
             title="add contact"
-            onPress={() => console.log(`trying to add ${this.state.username}`)}
+            onPress={this._addContact}
             disabled={this.state.username === ''}
           />
-        </View>
-      </View>
+        </FlexItem>
+      </FlexWrapper>
     );
   }
 }
+
+export default connect(null, { addContact })(AddContactScreen);
