@@ -43,9 +43,9 @@ const enhancements = compose(applyMiddleware(thunk, logger), autoRehydrate());
 const store = createStore(reducers, initial, enhancements);
 // make store persistent
 const persist = persistStore(store, { storage: AsyncStorage });
-const shouldPurge = false;
 
-// purge if necessary
+// hacky way to purge if needed
+const shouldPurge = false;
 if (shouldPurge) persist.purge();
 
 export default class extends Component {
