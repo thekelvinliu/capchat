@@ -20,6 +20,10 @@
       "as-needed"
     ],
     "comma-dangle": 0,
+    "curly": [
+      "error",
+      "multi"
+    ],
     "no-underscore-dangle": [
       "error",
       {
