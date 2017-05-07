@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import { connect } from 'react-redux';
+import Spinner from 'react-native-loading-spinner-overlay';
 import { setUsername } from '../ducks/account';
-// import { completeRegistration } from '../ducks/registration';
+import { completeRegistration } from '../ducks/registration';
 
 const $colors = {
   gray: 'gray',
@@ -31,14 +32,16 @@ class RegistrationScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      buttonPressed: false,
       username: '',
       password: ''
     };
     this._register = this._register.bind(this);
   }
   _register() {
+    this.setState({ buttonPressed: true });
     this.props.setUsername(this.state.username.trim());
-    // this.props.completeRegistration();
+    setTimeout(() => this.props.completeRegistration(), 5000);
   }
   render() {
     const copy = [
@@ -77,12 +80,19 @@ class RegistrationScreen extends Component {
           <Button
             title="register"
             onPress={this._register}
-            disabled={Object.keys(this.state).some(k => this.state[k] === '')}
+            disabled={
+              ['username', 'password'].some(k => this.state[k] === '')
+              || this.state.buttonPressed
+            }
           />
         </View>
+        <Spinner
+          visible={this.state.buttonPressed}
+          textContent={`registering '${this.props.account.username}'...`}
+        />
       </View>
     );
   }
 }
 
-export default connect(state => state, { setUsername })(RegistrationScreen);
+export default connect(state => state, { setUsername, completeRegistration })(RegistrationScreen);

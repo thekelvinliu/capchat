@@ -4979,6 +4979,10 @@ react-native-drawer-layout@1.2.0:
   dependencies:
     eventemitter3 "^2.0.2"
 
+react-native-loading-spinner-overlay@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-loading-spinner-overlay/-/react-native-loading-spinner-overlay-0.5.0.tgz#2f06c14da24139303ff95364f4b9de8ab1cacc97"
+
 "react-native-maps@https://github.com/expo/react-native-maps/archive/v0.12.2-exp.1.tar.gz":
   version "0.12.2"
   resolved "https://github.com/expo/react-native-maps/archive/v0.12.2-exp.1.tar.gz#1984bfe5a8a341dd3b44ad565cfcd1b25a5c2b03"
