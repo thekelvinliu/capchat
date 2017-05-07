@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
+import FlexItem from '../components/FlexItem';
+import FlexWrapper from '../components/FlexWrapper';
 import IconButton from '../components/IconButton';
-
-const style = {
-  marginTop: 100,
-  textAlign: 'center'
-};
 
 export default class extends Component {
   static navigationOptions({ navigation }) {
@@ -34,9 +31,11 @@ export default class extends Component {
   }
   render() {
     return (
-      <View>
-        <Text style={style}>this is the chat screen</Text>
-      </View>
+      <FlexWrapper>
+        <FlexItem>
+          <Text>this is the chat screen</Text>
+        </FlexItem>
+      </FlexWrapper>
     );
   }
 }

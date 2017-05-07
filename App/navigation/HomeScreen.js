@@ -1,17 +1,14 @@
 import Eth from 'ethjs';
 
 import React, { Component } from 'react';
-import { Button, Platform, StatusBar, Text, View } from 'react-native';
+import { Button, Platform, StatusBar, Text } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 
+import FlexItem from '../components/FlexItem';
+import FlexWrapper from '../components/FlexWrapper';
 import IconButton from '../components/IconButton';
 
 const eth = new Eth(new Eth.HttpProvider('https://ropsten.infura.io'));
-
-const style = {
-  marginTop: 10,
-  textAlign: 'center'
-};
 
 export default class extends Component {
   static navigationOptions({ navigation }) {
@@ -68,29 +65,43 @@ export default class extends Component {
   render() {
     const { navigate, state } = this.props.navigation;
     const { routeName } = state;
-    const texts = (this.state.isLoading)
-      ? <Text style={style}>loading data from ethereum</Text>
-      : Object.keys(this.state)
+    let texts;
+    if (this.state.isLoading)
+      texts = (
+        <FlexItem>
+          <Text>loading info from ethereum blockchain</Text>
+        </FlexItem>
+      );
+    else
+      texts = Object.keys(this.state)
         .filter(k => k !== 'isLoading')
         .map(k => (
-          <Text style={style} key={k}>{`the ${k} is ${this.state[k]}`}</Text>
+          <FlexItem key={k}>
+            <Text>{`the ${k} is ${this.state[k]}`}</Text>
+          </FlexItem>
         ));
     return (
-      <View>
+      <FlexWrapper>
         <StatusBar hidden={Platform.OS === 'android'} />
-        <Text style={style}>this is the menu screen</Text>
-        <Button
-          title="chat with alice"
-          onPress={() =>
-            navigate('Chat', {
-              from: routeName,
-              username: 'alice'
-            })
-          }
-        />
-        <Text style={style}>{`${Buffer.from('hello world').toString('hex')}`}</Text>
+        <FlexItem>
+          <Text>this is the home screen</Text>
+        </FlexItem>
+        <FlexItem>
+          <Text>links to recent chats will appear here</Text>
+        </FlexItem>
+        <FlexItem>
+          <Button
+            title="chat with alice"
+            onPress={() =>
+              navigate('Chat', {
+                from: routeName,
+                username: 'alice'
+              })
+            }
+          />
+        </FlexItem>
         {texts}
-      </View>
+      </FlexWrapper>
     );
   }
 }
