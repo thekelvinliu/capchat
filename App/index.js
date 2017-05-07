@@ -1,41 +1,52 @@
 import React, { Component } from 'react';
+import { AsyncStorage } from 'react-native';
 import { Provider } from 'react-redux';
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
 import logger from 'redux-logger';
+import { autoRehydrate, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
+
 import App from './app';
 import reducers from './ducks';
+
 import './globals';
 
-// some configuration for the store
+// the initial app state
 const initial = {
   isRegistered: false,
-  messages: {
-    alice: [
-      {
-        type: 'from',
-        body: 'hey'
-      },
-      {
-        type: 'to',
-        body: 'hello'
-      }
-    ],
-    bob: [
-      {
-        type: 'to',
-        body: 'hello'
-      },
-      {
-        type: 'from',
-        body: 'world'
-      }
-    ]
-  }
+  // messages: {
+  //   alice: [
+  //     {
+  //       type: 'from',
+  //       body: 'hey'
+  //     },
+  //     {
+  //       type: 'to',
+  //       body: 'hello'
+  //     }
+  //   ],
+  //   bob: [
+  //     {
+  //       type: 'to',
+  //       body: 'hello'
+  //     },
+  //     {
+  //       type: 'from',
+  //       body: 'world'
+  //     }
+  //   ]
+  // }
 };
-const middlewares = applyMiddleware(thunk, logger);
-// create the redux store
-const store = createStore(reducers, initial, middlewares);
+// redux enhancements
+const enhancements = compose(applyMiddleware(thunk, logger), autoRehydrate());
+// create redux store
+const store = createStore(reducers, initial, enhancements);
+// make store persistent
+const persist = persistStore(store, { storage: AsyncStorage });
+const shouldPurge = false;
+
+// purge if necessary
+if (shouldPurge) persist.purge();
 
 export default class extends Component {
   render() {

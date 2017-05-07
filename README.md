@@ -5,11 +5,11 @@ a secure and usable messaging platform
 - [x] get ethjs/web3 working
 - [x] integrate redux
 - [x] initial registration screen
+- [x] persist storange
 - [ ] create wallet
 - [ ] get signal working
 - [ ] create keys
 - [ ] deploy user contract
-- [ ] persist storange
 - [ ] eject(???)
 - [ ] make the ui pretty
 
