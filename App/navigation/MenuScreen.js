@@ -45,14 +45,6 @@ class MenuScreen extends Component {
           }
         />
         <Button
-          title="add contact"
-          onPress={() =>
-            navigate('AddContact', {
-              from: routeName
-            })
-          }
-        />
-        <Button
           title="all contacts"
           onPress={() =>
             navigate('Contacts', {
