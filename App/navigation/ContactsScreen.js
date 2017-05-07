@@ -14,17 +14,19 @@ export default class extends Component {
       title: (params.mode === 'browse')
         ? 'contacts'
         : 'new message',
-      headerRight: (
-        <IconButton
-          set={Entypo}
-          name="add-user"
-          onPress={() =>
-            navigate('AddContact', {
-              from: routeName
-            })
-          }
-        />
-      )
+      headerRight: (params.mode === 'new')
+        ? null
+        : (
+          <IconButton
+            set={Entypo}
+            name="add-user"
+            onPress={() =>
+              navigate('AddContact', {
+                from: routeName
+              })
+            }
+          />
+        )
     };
   }
   render() {

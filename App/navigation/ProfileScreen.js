@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Alert, Button, Text, View } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Entypo } from '@expo/vector-icons';
 
@@ -40,11 +41,20 @@ class ProfileScreen extends Component {
     this._removeMessages = this._removeMessages.bind(this);
   }
   _removeContact() {
-    const { goBack, state } = this.props.navigation;
+    const { dispatch, goBack, state } = this.props.navigation;
     const { params } = state;
     this._removeMessages();
     this.props.removeContact(params.username);
-    goBack();
+    // go home when this is done from a chat screen
+    if (params.from === 'Chat')
+      dispatch(NavigationActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({ routeName: 'Home' })
+        ]
+      }));
+    else
+      goBack();
   }
   _removeMessages() {
     const { params } = this.props.navigation.state;
