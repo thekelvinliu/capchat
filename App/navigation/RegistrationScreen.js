@@ -78,4 +78,8 @@ class RegistrationScreen extends Component {
   }
 }
 
-export default connect(state => state, { setUsername, completeRegistration })(RegistrationScreen);
+export default connect(({
+  account
+}) => ({
+  account
+}), { setUsername, completeRegistration })(RegistrationScreen);

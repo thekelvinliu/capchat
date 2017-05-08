@@ -4,10 +4,17 @@ import AddContactScreen from './AddContactScreen';
 import ChatScreen from './ChatScreen';
 import ContactsScreen from './ContactsScreen';
 import HomeScreen from './HomeScreen';
+import LoadingScreen from './LoadingScreen';
 import MenuScreen from './MenuScreen';
 import ProfileScreen from './ProfileScreen';
 import RegistrationScreen from './RegistrationScreen';
 
+// export lone loading screen
+export const Loading = StackNavigator({
+  Loading: {
+    screen: LoadingScreen
+  }
+});
 // export lone registration screen
 export const Registration = StackNavigator({
   Registration: {

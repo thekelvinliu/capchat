@@ -1,16 +1,13 @@
-import Eth from 'ethjs';
-
 import React, { Component } from 'react';
 import { Button, Platform, StatusBar, Text } from 'react-native';
+import { connect } from 'react-redux';
 import { Entypo } from '@expo/vector-icons';
 
 import FlexItem from '../components/FlexItem';
 import FlexWrapper from '../components/FlexWrapper';
 import IconButton from '../components/IconButton';
 
-const eth = new Eth(new Eth.HttpProvider('https://ropsten.infura.io'));
-
-export default class extends Component {
+class HomeScreen extends Component {
   static navigationOptions({ navigation }) {
     const { navigate, state } = navigation;
     const { routeName } = state;
@@ -51,11 +48,11 @@ export default class extends Component {
     this.getData().done();
   }
   async getData() {
-    const balance = Eth.fromWei(
-      await eth.getBalance('0xeb61b66ea48a8834d4099a6276982cc211b0604d'),
+    const balance = this.props.eth.util.fromWei(
+      await this.props.eth.rpc.getBalance('0xeb61b66ea48a8834d4099a6276982cc211b0604d'),
       'ether'
     );
-    const blockNumber = await eth.blockNumber();
+    const blockNumber = await this.props.eth.rpc.blockNumber();
     this.setState({
       balance,
       blockNumber,
@@ -105,3 +102,5 @@ export default class extends Component {
     );
   }
 }
+
+export default connect(({ eth }) => ({ eth }))(HomeScreen);

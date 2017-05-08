@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Navigator, { Registration } from './navigation';
+import Root, { Loading, Registration } from './navigation';
 
 class App extends Component {
   render() {
-    return (this.props.isRegistered) ? <Navigator /> : <Registration />;
+    let Screen;
+    if (this.props.loading)
+      Screen = Loading;
+    else if (!this.props.isRegistered)
+      Screen = Registration;
+    else
+      Screen = Root;
+    return <Screen />;
   }
 }
 
-export default connect(({ isRegistered }) => ({ isRegistered }))(App);
+export default connect(({
+  isRegistered,
+  loading
+}) => ({
+  isRegistered,
+  loading
+}))(App);
