@@ -3,8 +3,9 @@ import { Button, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
 
-import { setUsername } from '../ducks/account';
-import { completeRegistration } from '../ducks/registration';
+import { createEthInstance } from '../ducks/eth';
+import { completeRegistration } from '../ducks/isRegistered';
+import { setUsername } from '../ducks/username';
 
 import FlexItem from '../components/FlexItem';
 import FlexWrapper from '../components/FlexWrapper';
@@ -25,7 +26,9 @@ class RegistrationScreen extends Component {
   }
   _register() {
     this.setState({ buttonPressed: true });
+    this.props.createEthInstance();
     this.props.setUsername(this.state.username.trim());
+    // this.props.createWalletThunk();
     setTimeout(() => this.props.completeRegistration(), 1000);
   }
   render() {
@@ -39,7 +42,7 @@ class RegistrationScreen extends Component {
       <FlexWrapper>
         <Spinner
           visible={this.state.buttonPressed}
-          textContent={`registering '${this.props.account.username}'...`}
+          textContent={`registering '${this.props.username}'...`}
         />
         <FlexItem>
           <Text>{copy}</Text>
@@ -79,7 +82,11 @@ class RegistrationScreen extends Component {
 }
 
 export default connect(({
-  account
+  username
 }) => ({
-  account
-}), { setUsername, completeRegistration })(RegistrationScreen);
+  username
+}), {
+  createEthInstance,
+  setUsername,
+  completeRegistration
+})(RegistrationScreen);

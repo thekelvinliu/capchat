@@ -14,8 +14,11 @@ export const removeContact = username => ({
   username
 });
 
+// default to empty object
+const defaultState = {};
+
 // reducer
-export default function(state = {}, action = {}) {
+export default function(state = defaultState, action = {}) {
   switch (action.type) {
     case ADD_CONTACT:
       // just add the username as a key for now

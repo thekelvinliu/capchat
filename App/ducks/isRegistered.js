@@ -10,8 +10,11 @@ export const resetRegistration = () => ({
   type: RESET
 });
 
-// reducer
-export default function(state = false, action = {}) {
+// default to false
+const defaultState = false;
+
+// export reducer
+export default function(state = defaultState, action = {}) {
   switch (action.type) {
     case COMPLETE:
       return true;

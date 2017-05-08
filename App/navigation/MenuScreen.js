@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { Alert, Button, Text } from 'react-native';
 import { connect } from 'react-redux';
 
-import { removeAccount } from '../ducks/account';
+import { removeAccount } from '../ducks';
 import { removeMessagesAll } from '../ducks/messages';
-import { resetRegistration } from '../ducks/registration';
 
 import FlexItem from '../components/FlexItem';
 import FlexWrapper from '../components/FlexWrapper';
@@ -26,7 +25,6 @@ class MenuScreen extends Component {
   }
   _removeProfile() {
     this.props.removeAccount();
-    this.props.resetRegistration();
   }
   render() {
     const { navigate, state } = this.props.navigation;
@@ -107,5 +105,4 @@ class MenuScreen extends Component {
 export default connect(null, {
   removeAccount,
   removeMessagesAll,
-  resetRegistration
 })(MenuScreen);

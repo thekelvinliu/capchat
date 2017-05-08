@@ -1,7 +1,9 @@
-// creates becomes false on rehydrate
 import { REHYDRATE } from 'redux-persist/constants';
 
-export default function(state = true, action = {}) {
+// default to true
+const defaultState = true;
+
+export default function(state = defaultState, action = {}) {
   switch (action.type) {
     case REHYDRATE:
       return false;

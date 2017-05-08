@@ -13,8 +13,11 @@ export const removeMessagesFrom = username => ({
   username
 });
 
+// default to empty object
+const defaultState = {};
+
 // reducer
-export default function(state = {}, action = {}) {
+export default function(state = defaultState, action = {}) {
   switch (action.type) {
     case REMOVE_FROM:
       return omit(state, action.username);

@@ -1,17 +1,23 @@
 import { combineReducers } from 'redux';
 
-import account from './account';
 import contacts from './contacts';
 import eth from './eth';
+import isRegistered, { resetRegistration } from './isRegistered';
 import loading from './loading';
 import messages from './messages';
-import registration from './registration';
+import username, { unsetUsername } from './username';
+
+// deletes user account
+export const removeAccount = () => dispatch => {
+  dispatch(resetRegistration());
+  dispatch(unsetUsername());
+};
 
 export default combineReducers({
-  account,
   contacts,
   eth,
-  isRegistered: registration,
+  isRegistered,
   loading,
-  messages
+  messages,
+  username
 });
