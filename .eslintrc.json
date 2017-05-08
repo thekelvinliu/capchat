@@ -24,6 +24,7 @@
       "error",
       "multi"
     ],
+    "no-case-declarations": 0,
     "no-underscore-dangle": [
       "error",
       {

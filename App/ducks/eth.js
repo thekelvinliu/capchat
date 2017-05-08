@@ -3,7 +3,7 @@ import { REHYDRATE } from 'redux-persist/constants';
 
 // functions
 const createInstance = () => ({
-  rpc: new Eth(new Eth.HttpProvider('https://ropsten.infura.io/')),
+  rpc: new Eth(new Eth.HttpProvider('http://10.208.51.101:8888/')),
   util: Eth
 });
 
