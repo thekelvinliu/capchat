@@ -7,7 +7,7 @@ export default class extends Component {
   };
   render() {
     return (
-      <Spinner textContent="loading capchat..." />
+      <Spinner visible textContent="loading capchat..." />
     );
   }
 }
