@@ -1,6 +1,6 @@
 // actions
-const COMPLETE = 'registration/COMPLETE';
-const RESET = 'registration/RESET';
+const COMPLETE = 'isRegistered/COMPLETE';
+const RESET = 'isRegistered/RESET';
 
 // action creators
 export const completeRegistration = () => ({
