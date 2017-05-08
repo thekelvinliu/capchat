@@ -11,38 +11,15 @@ import reducers from './ducks';
 
 import './globals';
 
-// the initial app state
-const initial = {
-  isRegistered: false,
-  // messages: {
-  //   alice: [
-  //     {
-  //       type: 'from',
-  //       body: 'hey'
-  //     },
-  //     {
-  //       type: 'to',
-  //       body: 'hello'
-  //     }
-  //   ],
-  //   bob: [
-  //     {
-  //       type: 'to',
-  //       body: 'hello'
-  //     },
-  //     {
-  //       type: 'from',
-  //       body: 'world'
-  //     }
-  //   ]
-  // }
-};
-// redux enhancements
+// enhancements for store
 const enhancements = compose(applyMiddleware(thunk, logger), autoRehydrate());
-// create redux store
-const store = createStore(reducers, initial, enhancements);
+// create store
+const store = createStore(reducers, {}, enhancements);
 // make store persistent
-const persist = persistStore(store, { storage: AsyncStorage });
+const persist = persistStore(store, {
+  blacklist: ['eth', 'loading'],
+  storage: AsyncStorage
+});
 
 // hacky way to purge if needed
 const shouldPurge = false;

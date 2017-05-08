@@ -11,7 +11,7 @@ export const resetRegistration = () => ({
 });
 
 // reducer
-export default function(state = {}, action = {}) {
+export default function(state = false, action = {}) {
   switch (action.type) {
     case COMPLETE:
       return true;

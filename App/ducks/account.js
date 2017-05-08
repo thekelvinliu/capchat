@@ -1,3 +1,5 @@
+// look at thunk and dispatch a create wallet action
+
 // actions
 const SET_USERNAME = 'account/SET_USERNAME';
 const REMOVE_ACCOUNT = 'account/REMOVE_ACCOUNT';
