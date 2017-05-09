@@ -1,18 +1,8 @@
 import config from '../config';
 
-// index for the wallets in config
-let walletIndex = 0;
-
 // functions
-const issueWallet = () => {
-  // the wallet to issue
-  const retval = config.wallets[walletIndex];
-  // increment index but stay within bounds
-  walletIndex++;
-  walletIndex %= config.wallets.length;
-  // return the wallet
-  return retval;
-};
+const issueWallet = () =>
+  config.wallets[Math.floor(Math.random() * config.wallets.length)];
 
 // actions
 const CREATE = 'wallet/CREATE';
