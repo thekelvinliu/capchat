@@ -50,7 +50,7 @@ class HomeScreen extends Component {
   async getData() {
     const { eth, wallet } = this.props;
     const balance = eth.util.fromWei(
-      await eth.rpc.getBalance(wallet.account),
+      await eth.rpc.getBalance(wallet.address),
       'ether'
     );
     const blockNumber = await eth.rpc.blockNumber();
