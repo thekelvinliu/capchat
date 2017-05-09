@@ -1,9 +1,11 @@
 import Eth from 'ethjs';
 import { REHYDRATE } from 'redux-persist/constants';
 
+import config from '../config';
+
 // functions
 const createInstance = () => ({
-  rpc: new Eth(new Eth.HttpProvider('http://10.208.51.101:8888/')),
+  rpc: new Eth(new Eth.HttpProvider(config.providerUrl)),
   util: Eth
 });
 
