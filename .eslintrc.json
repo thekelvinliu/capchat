@@ -25,6 +25,7 @@
       "multi"
     ],
     "no-case-declarations": 0,
+    "no-plusplus": 0,
     "no-underscore-dangle": [
       "error",
       {
