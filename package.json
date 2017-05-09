@@ -17,7 +17,6 @@
   "dependencies": {
     "@expo/vector-icons": "^4.0.0",
     "buffer": "^5.0.6",
-    "ethers": "^2.0.3",
     "ethjs": "thekelvinliu/ethjs",
     "expo": "^16.0.0",
     "react": "16.0.0-alpha.6",
