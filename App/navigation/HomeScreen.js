@@ -48,11 +48,12 @@ class HomeScreen extends Component {
     this.getData().done();
   }
   async getData() {
-    const balance = this.props.eth.util.fromWei(
-      await this.props.eth.rpc.getBalance('0xeb61b66ea48a8834d4099a6276982cc211b0604d'),
+    const { eth, wallet } = this.props;
+    const balance = eth.util.fromWei(
+      await eth.rpc.getBalance(wallet.instance.address),
       'ether'
     );
-    const blockNumber = await this.props.eth.rpc.blockNumber();
+    const blockNumber = await eth.rpc.blockNumber();
     this.setState({
       balance,
       blockNumber,
@@ -103,4 +104,10 @@ class HomeScreen extends Component {
   }
 }
 
-export default connect(({ eth }) => ({ eth }))(HomeScreen);
+export default connect(({
+  eth,
+  wallet
+}) => ({
+  eth,
+  wallet
+}))(HomeScreen);
