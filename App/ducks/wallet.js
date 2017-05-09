@@ -15,16 +15,16 @@ const issueWallet = () => {
 };
 
 // actions
-const CREATE_WALLET = 'wallet/CREATE_WALLET';
-const REMOVE_WALLET = 'wallet/REMOVE_WALLET';
+const CREATE = 'wallet/CREATE';
+const REMOVE = 'wallet/REMOVE';
 
 // action creators
 export const createWallet = () => ({
-  type: CREATE_WALLET,
+  type: CREATE,
   wallet: issueWallet()
 });
 export const removeWallet = () => ({
-  type: REMOVE_WALLET
+  type: REMOVE
 });
 
 // default to nulls
@@ -36,9 +36,9 @@ const defaultState = {
 
 export default function(state = defaultState, action = {}) {
   switch (action.type) {
-    case CREATE_WALLET:
+    case CREATE:
       return action.wallet;
-    case REMOVE_WALLET:
+    case REMOVE:
       return defaultState;
     default:
       return state;
