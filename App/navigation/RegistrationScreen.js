@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Text } from 'react-native';
+import { Button, Platform, StatusBar, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
 
@@ -42,6 +42,7 @@ class RegistrationScreen extends Component {
     ].join('');
     return (
       <FlexWrapper>
+        <StatusBar hidden={Platform.OS === 'android'} />
         <Spinner
           visible={this.state.buttonPressed}
           textContent={`registering '${this.props.username}'...`}
