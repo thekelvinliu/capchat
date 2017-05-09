@@ -1,7 +1,21 @@
 import { Wallet } from 'ethers';
 import { REHYDRATE } from 'redux-persist/constants';
 
+import config from '../config';
+
+// index for the wallets in config
+let walletIndex = 0;
+
 // functions
+const issueWallet = () => {
+  // the wallet to issue
+  const retval = config.wallets[walletIndex];
+  // increment index but stay within bounds
+  walletIndex++;
+  walletIndex %= config.wallets.length;
+  // return the wallet
+  return retval;
+};
 const loadWallet = phrase => ((phrase) ? Wallet.fromMnemonic(phrase) : null);
 
 // actions
@@ -23,7 +37,13 @@ export const removeWallet = () => ({
 });
 // thunks
 export const createWallet = () => async dispatch => {
-  const wallet = await Wallet.createRandom({});
+  // use wallets preloaded with ether instead of completely new wallets
+  // const wallet = await Wallet.createRandom({});
+  // issue a wallet
+  const { mnemonic } = issueWallet();
+  // load actual wallet instance
+  const wallet = await loadWallet(mnemonic);
+  // dispatch actions
   dispatch(addMnenomic(wallet.mnemonic));
   dispatch(addWallet(wallet));
 };
