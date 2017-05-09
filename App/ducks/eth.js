@@ -1,4 +1,6 @@
 import Eth from 'ethjs';
+import SignerProvider from 'ethjs-provider-signer';
+import { sign } from 'ethjs-signer';
 import { REHYDRATE } from 'redux-persist/constants';
 
 import config from '../config';

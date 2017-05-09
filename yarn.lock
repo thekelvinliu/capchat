@@ -303,6 +303,12 @@ assert-plus@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/assert-plus/-/assert-plus-0.2.0.tgz#d74e1b87e7affc0db8aadb7021f3fe48101ab234"
 
+assert@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/assert/-/assert-1.4.1.tgz#99912d591836b5a6f5b345c0f07eefc08fc65d91"
+  dependencies:
+    util "0.10.3"
+
 ast-types-flow@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/ast-types-flow/-/ast-types-flow-0.0.7.tgz#f70b735c6bca1a5c9c22d982c3e39e7feba3bdad"
@@ -1282,7 +1288,7 @@ bluebird@^3.4.7:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
 
-bn.js@4.11.6:
+bn.js@4.11.6, bn.js@^4.4.0:
   version "4.11.6"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.6.tgz#53344adb14617a13f6e8dd2ce28905d1c0ba3215"
 
@@ -1350,6 +1356,10 @@ braces@^1.8.2:
     expand-range "^1.8.1"
     preserve "^0.2.0"
     repeat-element "^1.1.2"
+
+brorand@^1.0.1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
 
 browser-resolve@^1.11.2:
   version "1.11.2"
@@ -2034,6 +2044,15 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
+elliptic@6.3.2:
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.3.2.tgz#e4c81e0829cf0a65ab70e998b8232723b5c1bc48"
+  dependencies:
+    bn.js "^4.4.0"
+    brorand "^1.0.1"
+    hash.js "^1.0.0"
+    inherits "^2.0.1"
+
 emoji-regex@^6.1.0:
   version "6.4.2"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-6.4.2.tgz#a30b6fee353d406d96cfb9fa765bdc82897eff6e"
@@ -2367,6 +2386,19 @@ ethjs-provider-http@0.1.3:
   dependencies:
     xhr2 "0.1.3"
 
+ethjs-provider-http@0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/ethjs-provider-http/-/ethjs-provider-http-0.1.6.tgz#1ec5d9b4be257ef1d56a500b22a741985e889420"
+  dependencies:
+    xhr2 "0.1.3"
+
+ethjs-provider-signer@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/ethjs-provider-signer/-/ethjs-provider-signer-0.1.4.tgz#6bd5cb38a8d5b0ddf46ac1e23a60eea1716171ae"
+  dependencies:
+    ethjs-provider-http "0.1.6"
+    ethjs-rpc "0.1.2"
+
 ethjs-query@0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/ethjs-query/-/ethjs-query-0.2.1.tgz#354f491c5c4d3682cfb81cdb778910aaa1e60059"
@@ -2380,9 +2412,25 @@ ethjs-rpc@0.1.1:
   dependencies:
     ethjs-format "0.1.8"
 
+ethjs-rpc@0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/ethjs-rpc/-/ethjs-rpc-0.1.2.tgz#39a3456b51c59aeeafb5ba556589a59f2da88d26"
+  dependencies:
+    ethjs-format "0.1.8"
+
 ethjs-schema@0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/ethjs-schema/-/ethjs-schema-0.1.4.tgz#0323a16333b1ace9a8f1d696a6ee63448fdd455f"
+
+ethjs-signer@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/ethjs-signer/-/ethjs-signer-0.1.1.tgz#0af77961e29ee458603aabd3660b8868d3386441"
+  dependencies:
+    elliptic "6.3.2"
+    js-sha3 "0.5.5"
+    number-to-bn "1.1.0"
+    rlp "2.0.0"
+    strip-hex-prefix "1.0.0"
 
 ethjs-unit@0.1.6:
   version "0.1.6"
@@ -3019,6 +3067,12 @@ hasbin@^1.2.3:
   dependencies:
     async "~1.5"
 
+hash.js@^1.0.0:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/hash.js/-/hash.js-1.0.3.tgz#1332ff00156c0a0ffdd8236013d07b77a0451573"
+  dependencies:
+    inherits "^2.0.1"
+
 hawk@~3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/hawk/-/hawk-3.1.3.tgz#078444bd7c1640b0fe540d2c9b73d59678e8e1c4"
@@ -3136,9 +3190,13 @@ inflight@^1.0.4:
     once "^1.3.0"
     wrappy "1"
 
-inherits@2, inherits@2.0.3, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.1:
+inherits@2, inherits@2.0.3, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.1:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
+
+inherits@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.1.tgz#b17d08d326b4423e568eff719f91b0b1cbdf69f1"
 
 ini@~1.3.0:
   version "1.3.4"
@@ -4419,6 +4477,14 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
+number-to-bn@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/number-to-bn/-/number-to-bn-1.1.0.tgz#51a3387c5bc68035ab4058c626132f767d9d08bf"
+  dependencies:
+    bn.js "4.11.6"
+    is-hex-prefixed "1.0.0"
+    strip-hex-prefix "1.0.0"
+
 number-to-bn@1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/number-to-bn/-/number-to-bn-1.7.0.tgz#bb3623592f7e5f9e0030b1977bd41a0c53fe1ea0"
@@ -5373,6 +5439,10 @@ rimraf@~2.4.0:
   dependencies:
     glob "^6.0.1"
 
+rlp@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/rlp/-/rlp-2.0.0.tgz#9db384ff4b89a8f61563d92395d8625b18f3afb0"
+
 rndm@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/rndm/-/rndm-1.2.0.tgz#f33fe9cfb52bbfd520aa18323bc65db110a1b76c"
@@ -6102,6 +6172,12 @@ util-deprecate@1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
 
+util@0.10.3:
+  version "0.10.3"
+  resolved "https://registry.yarnpkg.com/util/-/util-0.10.3.tgz#7afb1afe50805246489e3db7fe0ed379336ac0f9"
+  dependencies:
+    inherits "2.0.1"
+
 utils-merge@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.0.tgz#0294fb922bb9375153541c4f7096231f287c8af8"
@@ -6347,13 +6423,9 @@ xdl@^40.0.0:
     xhr2 "^0.1.3"
     yesno "^0.0.1"
 
-xhr2@0.1.3:
+xhr2@0.1.3, xhr2@^0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/xhr2/-/xhr2-0.1.3.tgz#cbfc4759a69b4a888e78cf4f20b051038757bd11"
-
-xhr2@^0.1.3:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/xhr2/-/xhr2-0.1.4.tgz#7f87658847716db5026323812f818cadab387a5f"
 
 xml-name-validator@^2.0.1:
   version "2.0.1"
