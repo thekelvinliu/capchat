@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import { beginRegistration } from '../ducks';
-import { setUsername } from '../ducks/username';
 
 import FlexItem from '../components/FlexItem';
 import FlexWrapper from '../components/FlexWrapper';
@@ -24,13 +23,11 @@ class RegistrationScreen extends Component {
     this._register = this._register.bind(this);
   }
   _register() {
-    // set username
-    this.props.setUsername(this.state.username.trim());
     // show spinner
     this.setState({ buttonPressed: true });
     // allow the spinner to render before dispatch
     setTimeout(() => {
-      this.props.beginRegistration();
+      this.props.beginRegistration(this.state.username.trim());
     }, 100);
   }
   render() {
@@ -45,7 +42,7 @@ class RegistrationScreen extends Component {
         <StatusBar hidden={Platform.OS === 'android'} />
         <Spinner
           visible={this.state.buttonPressed}
-          textContent={`registering '${this.props.username}'...`}
+          textContent={`registering '${this.state.username.trim()}'...`}
         />
         <FlexItem>
           <Text>{copy}</Text>
@@ -84,11 +81,4 @@ class RegistrationScreen extends Component {
   }
 }
 
-export default connect(({
-  username
-}) => ({
-  username
-}), {
-  beginRegistration,
-  setUsername,
-})(RegistrationScreen);
+export default connect(null, { beginRegistration })(RegistrationScreen);

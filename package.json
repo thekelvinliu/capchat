@@ -17,7 +17,6 @@
   "dependencies": {
     "@expo/vector-icons": "^4.0.0",
     "buffer": "^5.0.6",
-    "ethers": "^2.0.3",
     "ethjs": "thekelvinliu/ethjs",
     "expo": "^16.0.0",
     "react": "16.0.0-alpha.6",
@@ -28,7 +27,6 @@
     "redux": "^3.6.0",
     "redux-logger": "^3.0.1",
     "redux-persist": "^4.8.0",
-    "redux-persist-transform-filter": "^0.0.9",
     "redux-thunk": "^2.2.0",
     "styled-components": "^1.4.6"
   },

@@ -20,7 +20,8 @@ export default function(state = defaultState, action = {}) {
     case SET:
       return action.username;
     case UNSET:
-    default:
       return defaultState;
+    default:
+      return state;
   }
 }

@@ -11,15 +11,22 @@ const createInstance = () => ({
 
 // actions
 const CREATE = 'eth/CREATE';
+const REMOVE = 'eth/REMOVE';
 
 // action creators
 export const createEthInstance = () => ({
   type: CREATE,
   instance: createInstance()
 });
+export const removeEthInstance = () => ({
+  type: REMOVE
+});
 
-// default to empty object
-const defaultState = {};
+// default to nulls
+const defaultState = {
+  rpc: null,
+  util: null
+};
 
 export default function(state = defaultState, action = {}) {
   switch (action.type) {
@@ -30,6 +37,8 @@ export default function(state = defaultState, action = {}) {
       return (action.payload.isRegistered)
         ? createInstance()
         : defaultState;
+    case REMOVE:
+      return defaultState;
     default:
       return state;
   }
