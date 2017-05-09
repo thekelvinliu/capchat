@@ -45,7 +45,7 @@ class HomeScreen extends Component {
     };
   }
   componentWillMount() {
-    this.getData().done();
+    setInterval(() => this.getData().done(), 5000);
   }
   async getData() {
     const { eth, wallet } = this.props;
